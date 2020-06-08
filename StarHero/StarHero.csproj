@@ -41,17 +41,24 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="game\engine\core\components\AnimationComponent.cs" />
+    <Compile Include="game\engine\core\components\animation\AnimationComponent.cs" />
+    <Compile Include="game\engine\core\components\animation\AnimationControllerComponent.cs" />
+    <Compile Include="game\engine\core\components\animation\AnimationFrame.cs" />
+    <Compile Include="game\engine\core\components\CameraComponent.cs" />
     <Compile Include="game\engine\core\components\ColliderComponent.cs" />
+    <Compile Include="game\engine\core\components\map\Tile.cs" />
+    <Compile Include="game\engine\core\components\map\TileMapComponent.cs" />
     <Compile Include="game\engine\core\components\PhysicComponent.cs" />
     <Compile Include="game\engine\core\components\SpiriteComponent.cs" />
     <Compile Include="game\engine\core\components\BaseComponent.cs" />
     <Compile Include="game\engine\core\components\TransformComponent.cs" />
+    <Compile Include="game\engine\core\objects\BaseGameObject.cs" />
     <Compile Include="game\engine\events\Event.cs" />
     <Compile Include="game\engine\system\ColliderWorldSystem.cs" />
     <Compile Include="game\engine\system\ObjectWorldSystem.cs" />
     <Compile Include="game\engine\system\PhysicWorldSystem.cs" />
     <Compile Include="game\engine\system\SpiriteWorldSystem.cs" />
+    <Compile Include="game\engine\system\TileMapWorldSystem.cs" />
     <Compile Include="game\engine\system\WorldSystem.cs" />
     <Compile Include="game\engine\core\components\GameComponent.cs" />
     <Compile Include="game\engine\core\objects\GameObject.cs" />

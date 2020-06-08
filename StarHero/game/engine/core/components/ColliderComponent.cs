@@ -9,7 +9,12 @@ namespace StarHero.game.engine.core.components
     {
         public override void Update(GameTime gameTime)
         {
-            throw new System.NotImplementedException();
+
+        }
+
+        public bool IsCollider(ColliderComponent other)
+        {
+            return false;
         }
     }
 }

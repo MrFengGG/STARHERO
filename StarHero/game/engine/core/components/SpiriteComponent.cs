@@ -17,6 +17,8 @@ namespace StarHero.game.engine.core.components
 
         public Vector2 Origin { get; set; }
 
+        public Vector2 Position { get; set; }
+
         public SpiriteComponent(Texture2D texture, GameObject parent)
         {
             this.parentGameObject = parent;
@@ -29,12 +31,13 @@ namespace StarHero.game.engine.core.components
 
         public override void Update(GameTime gameTime)
         {
+
         }
 
         public virtual void Render(SpriteBatch spriteBatch)
         {
             TransformComponent transform = GetParent().GetComponent<TransformComponent>();
-            spriteBatch.Draw(Texture, transform.Position, SourceRectangle, TextureColor, 
+            spriteBatch.Draw(Texture, transform.Position + Position, SourceRectangle, TextureColor, 
                 transform.Rotation, Origin, transform.Scale, SpriteEffects.None, Depth);
         }
     }

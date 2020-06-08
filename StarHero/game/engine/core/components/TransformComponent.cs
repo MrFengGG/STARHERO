@@ -10,6 +10,13 @@ namespace StarHero.game.engine.core.components
 
         public float Rotation { get; set; }
 
+        public TransformComponent(Vector2 position, Vector2 scale, float rotation)
+        {
+            Position = position;
+            Scale = scale;
+            Rotation = rotation;
+        }
+
         public override void Update(GameTime gameTime)
         {
             

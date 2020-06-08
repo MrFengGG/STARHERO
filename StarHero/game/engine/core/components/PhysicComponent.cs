@@ -7,7 +7,6 @@ namespace StarHero.game.engine.core.components
     {
         public override void Update(GameTime gameTime)
         {
-            throw new NotImplementedException();
         }
     }
 }
