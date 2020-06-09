@@ -18,6 +18,8 @@ namespace StarHero.game.engine.core.objects
         //获取父节点子组件
         T GetParentComponent<T>() where T : GameComponent;
 
+        void AddComponent<T>(T component) where T : GameComponent;
+
         //响应事件
         void OnEvent(Event gameEvent);
     }

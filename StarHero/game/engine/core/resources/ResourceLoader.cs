@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 
-namespace StarHero.resources
+namespace StarHero.game.engine.resources
 {
     class ResourceLoader
     {

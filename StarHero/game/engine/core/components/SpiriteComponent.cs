@@ -5,7 +5,7 @@ using StarHero.game.engine.core.objects;
 
 namespace StarHero.game.engine.core.components
 {
-    class SpiriteComponent : BaseComponent
+    class SpiriteComponent : DrawableComponent
     {
         public Texture2D Texture { get; set; }
 
@@ -34,7 +34,7 @@ namespace StarHero.game.engine.core.components
 
         }
 
-        public virtual void Render(SpriteBatch spriteBatch)
+        public override void Render(SpriteBatch spriteBatch)
         {
             TransformComponent transform = GetParent().GetComponent<TransformComponent>();
             spriteBatch.Draw(Texture, transform.Position + Position, SourceRectangle, TextureColor, 

@@ -41,11 +41,13 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="game\engine\core\context\EngineContext.cs" />
     <Compile Include="game\engine\core\components\animation\AnimationComponent.cs" />
     <Compile Include="game\engine\core\components\animation\AnimationControllerComponent.cs" />
     <Compile Include="game\engine\core\components\animation\AnimationFrame.cs" />
     <Compile Include="game\engine\core\components\CameraComponent.cs" />
     <Compile Include="game\engine\core\components\ColliderComponent.cs" />
+    <Compile Include="game\engine\core\components\DrawableComponent.cs" />
     <Compile Include="game\engine\core\components\map\Tile.cs" />
     <Compile Include="game\engine\core\components\map\TileMapComponent.cs" />
     <Compile Include="game\engine\core\components\PhysicComponent.cs" />
@@ -53,36 +55,21 @@
     <Compile Include="game\engine\core\components\BaseComponent.cs" />
     <Compile Include="game\engine\core\components\TransformComponent.cs" />
     <Compile Include="game\engine\core\objects\BaseGameObject.cs" />
-    <Compile Include="game\engine\events\Event.cs" />
-    <Compile Include="game\engine\system\ColliderWorldSystem.cs" />
-    <Compile Include="game\engine\system\ObjectWorldSystem.cs" />
-    <Compile Include="game\engine\system\PhysicWorldSystem.cs" />
-    <Compile Include="game\engine\system\SpiriteWorldSystem.cs" />
-    <Compile Include="game\engine\system\TileMapWorldSystem.cs" />
-    <Compile Include="game\engine\system\WorldSystem.cs" />
+    <Compile Include="game\engine\core\events\Event.cs" />
+    <Compile Include="game\engine\core\resources\ResourceLoader.cs" />
+    <Compile Include="game\engine\core\system\ColliderWorldSystem.cs" />
+    <Compile Include="game\engine\core\system\ObjectWorldSystem.cs" />
+    <Compile Include="game\engine\core\system\PhysicWorldSystem.cs" />
+    <Compile Include="game\engine\core\system\SpiriteWorldSystem.cs" />
+    <Compile Include="game\engine\core\system\TileMapWorldSystem.cs" />
+    <Compile Include="game\engine\core\system\WorldSystem.cs" />
     <Compile Include="game\engine\core\components\GameComponent.cs" />
     <Compile Include="game\engine\core\objects\GameObject.cs" />
     <Compile Include="game\engine\core\World.cs" />
-    <Compile Include="game\scenes\player\TestPlayer.cs" />
-    <Compile Include="game\scenes\TestWorld.cs" />
-    <Compile Include="game\support\animation\Animation.cs" />
-    <Compile Include="game\support\BaseGameObject.cs" />
-    <Compile Include="game\support\GameObject.cs" />
-    <Compile Include="game\character\Activist.cs" />
-    <Compile Include="game\character\Character.cs" />
-    <Compile Include="game\support\manager\World.cs" />
-    <Compile Include="game\support\manager\WorldCreater.cs" />
-    <Compile Include="game\support\physic\BoxCollider2D.cs" />
-    <Compile Include="game\support\physic\RectangleBoundingBox.cs" />
-    <Compile Include="game\support\spirite\Spirite.cs" />
-    <Compile Include="game\support\camera\Camera2D.cs" />
     <Compile Include="Game1.cs" />
-    <Compile Include="game\support\map\Land.cs" />
-    <Compile Include="game\support\map\Map.cs" />
+    <Compile Include="game\test\TestGameObject.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="game\support\resources\ResourceLoader.cs" />
-    <Compile Include="game\support\map\TopographyBlock.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">

@@ -1,31 +1,55 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using StarHero.game.engine.core.components;
+using StarHero.game.engine.core.objects;
 using StarHero.game.engine.system;
 
 namespace StarHero.game.engine.support
 {
     class World
     {
-        public SpiriteWorldSystem SpiriteWorldSystem;
+        SpiriteWorldSystem spiriteWorldSystem;
 
-        public PhysicWorldSystem PhysicWorldSystem;
+        PhysicWorldSystem physicWorldSystem;
 
-        public ColliderWorldSystem ColliderWorldSystem;
+        ColliderWorldSystem colliderWorldSystem;
 
-        public ObjectWorldSystem ObjectWorldSystem;
+        ObjectWorldSystem objectWorldSystem;
+
+        public World()
+        {
+            spiriteWorldSystem = new SpiriteWorldSystem();
+            physicWorldSystem = new PhysicWorldSystem();
+            colliderWorldSystem = new ColliderWorldSystem();
+            objectWorldSystem = new ObjectWorldSystem();
+        }
+
+        public void AddComponent(core.components.GameComponent gameComponent)
+        {
+            DrawableComponent spiriteComponent = gameComponent as DrawableComponent;
+            if(spiriteComponent != null)
+            {
+                spiriteWorldSystem.AddComponent(spiriteComponent);
+            }
+            GameObject gameObject = gameComponent as GameObject;
+            if(gameObject != null)
+            {
+                objectWorldSystem.AddComponent(gameObject);
+            }
+        }
 
         public void Update(GameTime gameTime)
         {
-            ObjectWorldSystem.Update(gameTime);
-
-            PhysicWorldSystem.Update(gameTime);
-            ColliderWorldSystem.Update(gameTime);
-            ObjectWorldSystem.Update(gameTime);
+            objectWorldSystem.Update(gameTime);
+            physicWorldSystem.Update(gameTime);
+            colliderWorldSystem.Update(gameTime);
+            objectWorldSystem.Update(gameTime);
+            spiriteWorldSystem.Update(gameTime);
         }
 
         public void Render(SpriteBatch spriteBatch)
         {
-            SpiriteWorldSystem.Render(spriteBatch);
+            spiriteWorldSystem.Render(spriteBatch);
         }
     }
 }

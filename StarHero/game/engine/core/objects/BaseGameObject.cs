@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using StarHero.game.engine.context;
 using StarHero.game.engine.core.components;
 using StarHero.game.engine.core.events;
 
@@ -16,6 +17,12 @@ namespace StarHero.game.engine.core.objects
         public void Active()
         {
             isActive = true;
+        }
+
+        public void AddComponent<T>(T component) where T : GameComponent
+        {
+            gameComponents.Add(component);
+            EngineContext.World.AddComponent(component);
         }
 
         public T GetComponent<T>() where T : components.GameComponent
@@ -69,12 +76,10 @@ namespace StarHero.game.engine.core.objects
 
         public void OnEvent(Event gameEvent)
         {
-            throw new NotImplementedException();
         }
 
         public void Update(Microsoft.Xna.Framework.GameTime gameTime)
         {
-            throw new NotImplementedException();
         }
     }
 }

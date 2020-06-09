@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace StarHero.game.engine.core.components.animation
 {
-    class AnimationControllerComponent : BaseComponent
+    class AnimationControllerComponent : DrawableComponent
     {
         Dictionary<string, AnimationComponent> animationMap = new Dictionary<string, AnimationComponent>();
 
@@ -39,7 +39,7 @@ namespace StarHero.game.engine.core.components.animation
             currentAnimation.Update(gameTime);
         }
 
-        public void Render(SpriteBatch spriteBatch)
+        public override void Render(SpriteBatch spriteBatch)
         {
             currentAnimation.Render(spriteBatch);
         }

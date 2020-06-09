@@ -1,7 +1,10 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using StarHero.game.character;
+using StarHero.game.engine.context;
+using StarHero.game.engine.core.objects;
+using StarHero.game.engine.support;
+using StarHero.game.test;
 
 namespace StarHero
 {
@@ -13,23 +16,15 @@ namespace StarHero
         GraphicsDeviceManager graphics;
 
         SpriteBatch spriteBatch;
-        //游戏主角
-        Activist player;
-        //屏幕宽高
-        float screenWidth;
-        float screenHeight;
-        //当前游戏地图
-        Map gameMap;
-        //主摄像头
-        Camera2D mainCamera;
+
+        World world;
 
         public Game1()
         {
+            world = new World();
+            EngineContext.World = world;
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
-            //初始化屏幕宽高
-            screenWidth = graphics.PreferredBackBufferWidth;
-            screenHeight = graphics.PreferredBackBufferHeight;
         }
 
         /// <summary>
@@ -40,12 +35,6 @@ namespace StarHero
         /// </summary>
         protected override void Initialize()
         {
-            //初始化游戏主角
-            player = new Character(GraphicsDevice, new Vector2(0, 0), 100, 100);
-            //初始化游戏地图
-            gameMap = new Map("Content/testMap.json", screenWidth, screenHeight, GraphicsDevice);
-            //初始化主摄像头
-            mainCamera = new Camera2D(gameMap.Width, gameMap.Height, screenWidth, screenHeight);
             base.Initialize();
         }
 
@@ -57,6 +46,8 @@ namespace StarHero
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
+            GameObject gameObject = new TestGameObject(GraphicsDevice);
+            world.AddComponent(gameObject);
             // TODO: use this.Content to load your game content here
         }
 
@@ -78,9 +69,8 @@ namespace StarHero
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
-
             // TODO: Add your update logic here
-            player.Update(gameTime);
+            world.Update(gameTime);
             base.Update(gameTime);
         }
 
@@ -91,19 +81,8 @@ namespace StarHero
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-            //摄像头跟随
-            mainCamera.SetPosition(player.Position);
-            spriteBatch.Begin(SpriteSortMode.BackToFront,
-                        BlendState.AlphaBlend,
-                        null,
-                        null,
-                        null,
-                        null,
-                        mainCamera.GetTransformation(GraphicsDevice));
-            //绘制地图
-            gameMap.Draw(this.spriteBatch, mainCamera.getPosition());
-            //绘制角色
-            player.Draw(this.spriteBatch);
+            spriteBatch.Begin();
+            world.Render(spriteBatch);
             spriteBatch.End();
             base.Draw(gameTime);
         }

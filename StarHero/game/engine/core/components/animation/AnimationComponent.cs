@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace StarHero.game.engine.core.components.animation
 {
-    class AnimationComponent : BaseComponent
+    class AnimationComponent : DrawableComponent
     {
         public Texture2D Texture { get; set; }
 
@@ -50,9 +50,11 @@ namespace StarHero.game.engine.core.components.animation
         {
             this.parentGameObject = parent;
             frames.Add(firstFrame);
+            Depth = 0.1f;
+            TextureColor = Color.White;
         }
 
-        public void Render(SpriteBatch spriteBatch)
+        public override void Render(SpriteBatch spriteBatch)
         {
             AnimationFrame currentFrame = getCurrentFrame();
             if (currentFrame != null)
